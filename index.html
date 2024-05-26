@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Kegiatan Kelas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select,
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin-top: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Formulir Kegiatan Kelas</h2>
+    <form
+        action="https://script.google.com/macros/s/AKfycbzLULhE4afo_yWUzlR3MXJRnwU3giSUldZtluz1a4Na_COorf157kugcL4NVE6vzPAW/exec"
+        method="POST" enctype="multipart/form-data">
+        <label for="namaguru">Nama Guru:</label>
+        <input type="text" id="namaguru" name="namaguru" required>
+
+        <label for="jabatan">Jabatan Guru:</label>
+        <select id="jabatan" name="jabatan" required>
+            <option value="" disabled selected>Pilih Jabatan Guru</option>
+            <option value="GURU">GURU</option>
+            <option value="WALIKELAS">WALI KELAS</option>
+            <option value="KEPALAJURUSAN">KEPALA JURUSAN</option>
+            <option value="WAKILKEPALASEKOLAH">WAKIL KEPALA SEKOLAH</option>
+        </select>
+
+        <label for="jurusan">Mengajar Jurusan:</label>
+        <select id="jurusan" name="jurusan" required>
+            <option value="" disabled selected>Pilih Jurusan</option>
+            <option value="MESIN">MESIN</option>
+            <option value="LISTRIK">LISTRIK</option>
+            <option value="SIPIL">SIPIL</option>
+            <option value="RPL">RPL</option>
+        </select>
+
+        <label for="kelas">Kelas:</label>
+        <input type="text" id="kelas" name="kelas" placeholder="CONTOH: MESIN 1">
+
+        <label for="tingkat">Tingkat:</label>
+        <select id="tingkat" name="tingkat" required>
+            <option value="" disabled selected>Pilih Tingkat</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+
+        <label for="namakegiatan">Nama Kegiatan:</label>
+        <input type="text" id="namakegiatan" name="namakegiatan" required>
+
+        <label for="jeniskegiatan">Jenis Kegiatan:</label>
+        <select id="jeniskegiatan" name="jeniskegiatan" required>
+            <option value="" disabled selected>Pilih Jenis Kegiatan</option>
+            <option value="KBM">KBM</option>
+            <option value="Non KBM">Non KBM</option>
+        </select>
+
+        <label for="tanggalkegiatan">Tanggal Kegiatan:</label>
+        <input type="date" id="tanggalkegiatan" name="tanggalkegiatan" required>
+
+        <label for="ruangkegiatan">Ruang Kegiatan:</label>
+        <input type="text" id="ruangkegiatan" name="ruangkegiatan">
+
+        <label for="uraiankegiatan">Uraian Kegiatan:</label>
+        <textarea id="uraiankegiatan" name="uraiankegiatan" required></textarea>
+
+        <label for="targetkegiatan">Target Kegiatan:</label>
+        <input type="text" id="targetkegiatan" name="targetkegiatan">
+
+        <label for="buktikegiatan">Bukti Kegiatan:</label>
+        <input type="file" name="buktikegiatan" id="buktikegiatan" accept="image/*" required>
+        <input type="hidden" id="papbukti" name="papbukti">
+        <script>
+            document.getElementById('buktikegiatan').addEventListener('change', function (event) {
+                var file = event.target.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    document.getElementById('papbukti').value = reader.result.split(',')[1];
+                }
+                reader.readAsDataURL(file);
+            });
+        </script>
+
+        <input type="submit" value="Simpan Data">
+    </form>
+</body>
+
+</html>
